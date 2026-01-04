@@ -1,0 +1,21 @@
+version: 0.0
+os: linux
+
+files:
+  - source: /
+    destination: /home/ubuntu/rosyz-cartops
+    overwrite: true
+
+file_exists_behavior: OVERWRITE
+
+hooks:
+  ApplicationStop:
+    - location: scripts/stop_container.sh
+      timeout: 300
+      runas: root
+
+  ApplicationStart:
+    - location: scripts/start_container.sh
+      timeout: 300
+      runas: root
+
