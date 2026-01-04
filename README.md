@@ -48,8 +48,19 @@
     CMD ["nginx","-g","daemon off;"]
 
 <hr/>
+
 <h2>IAM Roles and Responsibilities</h2>
-<h3>1. CodePipeline Service Role</h3> <ul> <li>Orchestrates Source → Build → Deploy</li> <li>Uses CodeStar Connections for GitHub</li> </ul> <h3>2. CodeBuild Service Role</h3> <ul> <li>Builds Docker image</li> <li>Pushes image to Docker Hub</li> <li>Reads secrets from SSM Parameter Store</li> </ul> <h3>3. CodeDeploy Service Role</h3> <ul> <li>Manages deployment lifecycle</li> <li>Executes lifecycle hooks on EC2</li> </ul> <h3>4. EC2 Instance Role (Critical)</h3> <ul> <li>Reads SSM parameters</li> <li>Downloads artifacts from S3</li> <li>Communicates with CodeDeploy agent</li> </ul> <hr/> 
+
+<h3>1. CodePipelineServiceRole</h3> 
+
+<h3>2. CodeBuildServiceRole</h3> 
+
+<h3>3. CodeDeployServiceRole</h3>  
+
+<h3>4. EC2InstanceRole (Critical)</h3>
+
+
+<hr/> 
 
 
 <h2>Secure Secret Management (SSM Parameter Store)</h2>
@@ -199,7 +210,42 @@
     sudo systemctl start docker
 
 
+<h4>Install CodeDeploy Agent (Ubuntu)</h4>
 
+    sudo apt update -y
+    sudo apt install ruby wget -y
+    
+    wget https://aws-codedeploy-ap-south-1.s3.ap-south-1.amazonaws.com/latest/install
+    chmod +x install
+    sudo ./install auto
+
+Start CodeDeploy Agent
+
+    sudo service codedeploy-agent start
+
+Check CodeDeploy Agent Status
+
+    sudo service codedeploy-agent status
+
+
+Expected output:
+
+    active (running)
+
+Restart CodeDeploy Agent
+
+    sudo service codedeploy-agent restart
+
+aws cli v2 Linux ubuntu 
+
+    sudo apt install unzip
+    curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
+    unzip awscliv2.zip
+    sudo ./aws/install
+
+To check aws version
+
+    aws --version
     
 
 
