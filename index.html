@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>E-commerce</title>
+
+    <link rel="stylesheet" href="style.css">
+    <!-- Remix icon  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.2.0/remixicon.css">
+    <!-- Swiper Slider CSS  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR  -->
+    <nav>
+        <div class="logo">
+            <img src="Images/logo_dark.png" alt="">
+        </div>
+        <ul class="menu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#collection">Collection</a></li>
+            <li><a href="#products">Products</a></li>
+            <li><a href="#sellings">Best Sellings</a></li>
+            <li><a href="#blogs">Blogs</a></li>
+        </ul>
+
+        <div class="bars">
+            <i class="ri-menu-2-fill"></i>
+        </div>
+    </nav>
+    <!-- HERO HEADER  -->
+    <div class="swiper heroSwiper" id="home">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <!-- Hero slide 1 -->
+                <div class="hero_header">
+                    <div class="hero_content">
+                        <h2>Discover Your Style</h2>
+                        <h1>Unleash the Latest Trends with Rosyz.</h1>
+                        <p>Step into the world of fashion and redefine your wardrobe
+                            <br> with our exclusive collection.
+                        </p>
+                        <button> <a href="#products" style="color: white;">Shop Now <i class="ri-arrow-right-line"></i></a> </button>
+                    </div>
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <!-- Hero slide 2 -->
+                <div class="hero_header hero_header2">
+                    <div class="hero_content hero_content2">
+                        <h2>Discover the Latest Trands</h2>
+                        <h1>Elevate Your Style with Our New Collection</h1>
+                        <p>Get ready to turn heads with our exclusive fashion line.
+                            <br> Explore the season's hottest trends.
+                        </p>
+                        <button> <a href="#products" style="color: white;">Shop Now <i class="ri-arrow-right-line"></i></a> </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- CATEGORYS -->
+    <section class="categorys" id="collection">
+        <div class="headings">
+            <h2>Our Exclusive Collections</h2>
+            <h1>Shop By Categories</h1>
+        </div>
+        <div class="swiper categorySwiper">
+            <div class="swiper-wrapper">
+                <!-- Category 1 -->
+                <div class="swiper-slide">
+                    <div class="category_slide">
+                        <div class="category_img">
+                            <img src="Images/men.jpg" alt="">
+                        </div>
+                        <h2>Men</h2>
+                    </div>
+                </div>
+                <!-- Category 2 -->
+                <div class="swiper-slide">
+                    <div class="category_slide">
+                        <div class="category_img">
+                            <img src="Images/women.jpg" alt="">
+                        </div>
+                        <h2>Women</h2>
+                    </div>
+                </div>
+                <!-- Category 3 -->
+                <div class="swiper-slide">
+                    <div class="category_slide">
+                        <div class="category_img">
+                            <img src="Images/accessories.webp" alt="">
+                        </div>
+                        <h2>Accessories</h2>
+                    </div>
+                </div>
+                <!-- Category 4 -->
+                <div class="swiper-slide">
+                    <div class="category_slide">
+                        <div class="category_img">
+                            <img src="Images/outerwear.jpg" alt="">
+                        </div>
+                        <h2>Outerwear</h2>
+                    </div>
+                </div>
+                <!-- Category 5 -->
+                <div class="swiper-slide">
+                    <div class="category_slide">
+                        <div class="category_img">
+                            <img src="Images/shoes.jpg" alt="">
+                        </div>
+                        <h2>Shoes</h2>
+                    </div>
+                </div>
+                <!-- Category 6 -->
+                <div class="swiper-slide">
+                    <div class="category_slide">
+                        <div class="category_img">
+                            <img src="Images/glasses.jpg" alt="">
+                        </div>
+                        <h2>Glasses</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FASHION  -->
+    <section class="fashion">
+        <div class="fashion_row">
+            <h2>Seasonal Style Sensations</h2>
+            <h1>Unwrap the Hottest Trends of the Yea</h1>
+            <p>Get ready for a wardrobe makeover like no other.</p>
+            <a href="#">VIEW MORE</a>
+        </div>
+        <div class="fashion_row">
+            <h2>Elevate Your Style Game</h2>
+            <h1>Discover the Latest in Fashion</h1>
+            <p>Unleash your inner fashionista with Rosyz.</p>
+            <a href="#">VIEW MORE</a>
+        </div>
+    </section>
+    <!-- PRODUCTS  -->
+    <section class="products" id="products">
+        <div class="headings">
+            <h2>Stay Ahead of the Fashion Curve</h2>
+            <h1>Trending Products</h1>
+        </div>
+        <div class="products_category">
+            <button data-filter="all">Featured</button>
+            <button data-filter=".category-a">New Arrival</button>
+            <button data-filter=".category-b">Best Seller</button>
+        </div>
+        <div class="product_cards">
+            <!-- product 1 -->
+            <div class="product_card mix category-a category-b">
+                <i class="ri-heart-line like_icon"></i>
+                <div class="product_img">
+                    <button class="shop_btn"><i class="ri-add-line"></i> Quickshop</button>
+                    <img src="Images/product-1.jpg" alt="">
+                    <img src="Images/product-9.jpg" alt="" class="sec_product">
+                </div>
+                <p>WinterWonder Co</p>
+                <h2>Quilted Puffer Jacket</h2>
+                <span>$20.00</span>
+            </div>
+            <!-- product 2 -->
+            <div class="product_card mix category-b">
+                <i class="ri-heart-line like_icon"></i>
+                <div class="product_img">
+                    <button class="shop_btn"><i class="ri-add-line"></i> Quickshop</button>
+                    <img src="Images/product-2.jpg" alt="">
+                    <img src="Images/product-10.jpg" alt="" class="sec_product">
+                </div>
+                <p> The Gentleman's Choice</p>
+                <h2>Classic Men's Oxford Shirt</h2>
+                <span>$25.00</span>
+            </div>
+            <!-- product 3 -->
+            <div class="product_card mix category-b">
+                <i class="ri-heart-line like_icon"></i>
+                <div class="product_img">
+                    <button class="shop_btn"><i class="ri-add-line"></i> Quickshop</button>
+                    <img src="Images/product-3.jpg" alt="">
+                    <img src="Images/product-12.jpg" alt="" class="sec_product">
+                </div>
+                <p>Rebel Rider</p>
+                <h2>Leather Biker Jacket</h2>
+                <span>$25.00</span>
+            </div>
+            <!-- product 4 -->
+            <div class="product_card mix category-b category-a">
+                <i class="ri-heart-line like_icon"></i>
+                <div class="product_img">
+                    <button class="shop_btn"><i class="ri-add-line"></i> Quickshop</button>
+                    <img src="Images/product-4.jpg" alt="">
+                    <img src="Images/product-13.jpg" alt="" class="sec_product">
+                </div>
+                <p>Silk Elegance</p>
+                <h2>Luxury Silk Scarf</h2>
+                <span>$21.00</span>
+            </div>
+            <!-- product 5 -->
+            <div class="product_card mix category-b category-a">
+                <i class="ri-heart-line like_icon"></i>
+                <div class="product_img">
+                    <button class="shop_btn"><i class="ri-add-line"></i> Quickshop</button>
+                    <img src="Images/product-5.jpg" alt="">
+                    <img src="Images/product-14.jpg" alt="" class="sec_product">
+                </div>
+                <p>Chic Couture</p>
+                <h2> Elegant Evening Gown</h2>
+                <span>$24.00</span>
+            </div>
+            <!-- product 6 -->
+            <div class="product_card mix category-a category-b">
+                <i class="ri-heart-line like_icon"></i>
+                <div class="product_img">
+                    <button class="shop_btn"><i class="ri-add-line"></i> Quickshop</button>
+                    <img src="Images/product-6.jpg" alt="">
+                    <img src="Images/product-9.jpg" alt="" class="sec_product">
+                </div>
+                <p>Cozy Knits Co</p>
+                <h2>Cozy Knit Sweater</h2>
+                <span>$25.00</span>
+            </div>
+            <!-- product 7 -->
+            <div class="product_card mix category-a">
+                <i class="ri-heart-line like_icon"></i>
+                <div class="product_img">
+                    <button class="shop_btn"><i class="ri-add-line"></i> Quickshop</button>
+                    <img src="Images/product-7.jpg" alt="">
+                    <img src="Images/product-5.jpg" alt="" class="sec_product">
+                </div>
+                <p>Bohemian Bliss</p>
+                <h2>Boho Floral Maxi Dress</h2>
+                <span>$26.00</span>
+            </div>
+            <!-- product 8 -->
+            <div class="product_card mix category-a category-b">
+                <i class="ri-heart-line like_icon"></i>
+                <div class="product_img">
+                    <button class="shop_btn"><i class="ri-add-line"></i> Quickshop</button>
+                    <img src="Images/product-8.jpg" alt="">
+                    <img src="Images/product-2.jpg" alt="" class="sec_product">
+                </div>
+                <p>ActiveLife Gear</p>
+                <h2>Athletic Performance Shorts</h2>
+                <span>$23.00</span>
+            </div>
+        </div>
+    </section>
+    <!-- BANNER  -->
+    <section class="banner">
+        <div class="banner_content">
+            <h2>Style Redefined</h2>
+            <h1>Your Passport to Fashion <br> Elegance</h1>
+            <p>Indulge in the art of fashion with Rosyz. Discover a world of sophistication and timeless elegance.</p>
+            <button class="btn2">Discover Now</button>
+        </div>
+    </section>
+    <!-- SELLING -->
+    <section class="sellings" id="sellings">
+        <div class="headings">
+            <h2>Top Picks for Fashion-Forward Shoppers</h2>
+            <h1>Our Best Sellings</h1>
+        </div>
+
+        <div class="product_cards best_products">
+            <!-- product 1 -->
+            <div class="product_card mix category-b category-a">
+                <i class="ri-heart-line like_icon"></i>
+                <div class="product_img">
+                    <button class="shop_btn"><i class="ri-add-line"></i> Quickshop</button>
+                    <img src="Images/product-4.jpg" alt="">
+                    <img src="Images/product-13.jpg" alt="" class="sec_product">
+                </div>
+                <p>Silk Elegance</p>
+                <h2>Luxury Silk Scarf</h2>
+                <span>$21.00</span>
+            </div>
+            <!-- product 2 -->
+            <div class="product_card mix category-b category-a">
+                <i class="ri-heart-line like_icon"></i>
+                <div class="product_img">
+                    <button class="shop_btn"><i class="ri-add-line"></i> Quickshop</button>
+                    <img src="Images/product-5.jpg" alt="">
+                    <img src="Images/product-14.jpg" alt="" class="sec_product">
+                </div>
+                <p>Chic Couture</p>
+                <h2> Elegant Evening Gown</h2>
+                <span>$24.00</span>
+            </div>
+            <!-- product 3 -->
+            <div class="product_card mix category-a category-b">
+                <i class="ri-heart-line like_icon"></i>
+                <div class="product_img">
+                    <button class="shop_btn"><i class="ri-add-line"></i> Quickshop</button>
+                    <img src="Images/product-6.jpg" alt="">
+                    <img src="Images/product-9.jpg" alt="" class="sec_product">
+                </div>
+                <p>Cozy Knits Co</p>
+                <h2>Cozy Knit Sweater</h2>
+                <span>$25.00</span>
+            </div>
+        </div>
+    </section>
+    <!-- SPRING COLLECTION -->
+    <section class="spring_collections">
+        <div class="headings">
+            <h2>Blossom into Style: Our Spring Fashion Picks</h2>
+            <h1>The Spring Collection</h1>
+        </div>
+        <div class="swiper collectionSwiper">
+            <div class="swiper-wrapper">
+                <!-- slide 1 -->
+                <div class="swiper-slide">
+                    <div class="collections_img">
+                        <i class="ri-add-large-line icon" id="toggle_icon"></i>
+                        <img src="Images/spring-1.jpg" alt="">
+                        <div class="small_product">
+                            <div class="SP_img">
+                                <img src="Images/spring-1.jpg" alt="">
+                            </div>
+                            <div class="SP_content">
+                                <p>Chic Couture</p>
+                                <h2>Elegant Evening Gown</h2>
+                                <span>$25.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- slide 2 -->
+                <div class="swiper-slide">
+                    <div class="collections_img">
+                        <i class="ri-add-large-line icon toggle_icon2" id="toggle_icon"></i>
+                        <img src="Images/spring-2.jpg" alt="">
+                        <div class="small_product">
+                            <div class="SP_img">
+                                <img src="Images/spring-2.jpg" alt="">
+                            </div>
+                            <div class="SP_content">
+                                <p>Cozy Knits Co</p>
+                                <h2>Cozy Knit Sweater</h2>
+                                <span>$22.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- slide 3 -->
+                <div class="swiper-slide">
+                    <div class="collections_img">
+                        <i class="ri-add-large-line icon toggle_icon3" id="toggle_icon"></i>
+                        <img src="Images/spring-3.jpg" alt="">
+                        <div class="small_product">
+                            <div class="SP_img">
+                                <img src="Images/spring-3.jpg" alt="">
+                            </div>
+                            <div class="SP_content">
+                                <p>Denim Delight</p>
+                                <h2>Denim Skinny Jeans</h2>
+                                <span>$24.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- slide 4 -->
+                <div class="swiper-slide">
+                    <div class="collections_img">
+                        <i class="ri-add-large-line icon toggle_icon4" id="toggle_icon"></i>
+                        <img src="Images/spring-5.jpg" alt="">
+                        <div class="small_product">
+                            <div class="SP_img">
+                                <img src="Images/spring-5.jpg" alt="">
+                            </div>
+                            <div class="SP_content">
+                                <p>Silk Elegance</p>
+                                <h2>Luxury Silk Scarf</h2>
+                                <span>$26.00</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- BLOGS  -->
+    <section class="blogs" id="blogs">
+        <div class="headings">
+            <h2>Explore Our Latest Fashion Insights</h2>
+            <h1>Blog posts</h1>
+        </div>
+
+        <div class="swiper blogSwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <!-- blog 1 -->
+                    <div class="blog_card">
+                        <div class="blog_img">
+                            <img src="Images/blog-1.jpg" alt="">
+                        </div>
+                        <div class="blog_content">
+                            <div class="blog_head">
+                                <p>By <span>Qodex Web</span> </p>
+                                <p>November <span>06</span> <span>2024</span></p>
+                            </div>
+                            <h2>Fashion Forward Exploring Future Trends</h2>
+                            <p>ANY, MEANING - IT DOESN'T MATTER WHAT COLOR OR PRINT IT IS. IT'LL WORK. Augue...</p>
+                            <button class="btn2">READ MORE</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <!-- blog 2 -->
+                    <div class="blog_card">
+                        <div class="blog_img">
+                            <img src="Images/blog-2.jpg" alt="">
+                        </div>
+                        <div class="blog_content">
+                            <div class="blog_head">
+                                <p>By <span>Qodex Web</span> </p>
+                                <p>November <span>06</span> <span>2024</span></p>
+                            </div>
+                            <h2>Fashion Forward Exploring Future Trends</h2>
+                            <p>ANY, MEANING - IT DOESN'T MATTER WHAT COLOR OR PRINT IT IS. IT'LL WORK. Augue...</p>
+                            <button class="btn2">READ MORE</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <!-- blog 3 -->
+                    <div class="blog_card">
+                        <div class="blog_img">
+                            <img src="Images/blog-3.jpg" alt="">
+                        </div>
+                        <div class="blog_content">
+                            <div class="blog_head">
+                                <p>By <span>Qodex Web</span> </p>
+                                <p>November <span>06</span> <span>2024</span></p>
+                            </div>
+                            <h2>Fashion Forward Exploring Future Trends</h2>
+                            <p>ANY, MEANING - IT DOESN'T MATTER WHAT COLOR OR PRINT IT IS. IT'LL WORK. Augue...</p>
+                            <button class="btn2">READ MORE</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <!-- blog 4 -->
+                    <div class="blog_card">
+                        <div class="blog_img">
+                            <img src="Images/blog-4.jpg" alt="">
+                        </div>
+                        <div class="blog_content">
+                            <div class="blog_head">
+                                <p>By <span>Qodex Web</span> </p>
+                                <p>November <span>06</span> <span>2024</span></p>
+                            </div>
+                            <h2>Fashion Forward Exploring Future Trends</h2>
+                            <p>ANY, MEANING - IT DOESN'T MATTER WHAT COLOR OR PRINT IT IS. IT'LL WORK. Augue...</p>
+                            <button class="btn2">READ MORE</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <!-- blog 4 -->
+                    <div class="blog_card">
+                        <div class="blog_img">
+                            <img src="Images/blog-5.jpg" alt="">
+                        </div>
+                        <div class="blog_content">
+                            <div class="blog_head">
+                                <p>By <span>Qodex Web</span> </p>
+                                <p>November <span>06</span> <span>2024</span></p>
+                            </div>
+                            <h2>Fashion Forward Exploring Future Trends</h2>
+                            <p>ANY, MEANING - IT DOESN'T MATTER WHAT COLOR OR PRINT IT IS. IT'LL WORK. Augue...</p>
+                            <button class="btn2">READ MORE</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FOLLOW US   -->
+    <section class="follow">
+        <div class="headings">
+            <h1>Follow Us</h1>
+            <h2>@Rosyz_Fashion_Store</h2>
+        </div>
+        <div class="swiper followSwiper">
+            <div class="swiper-wrapper">
+                <!-- slide 1 -->
+                <div class="swiper-slide">
+                    <div class="insta_img">
+                        <img src="Images/insta1.jpg" alt="">
+                    </div>
+                </div>
+                <!-- slide 2 -->
+                <div class="swiper-slide">
+                    <div class="insta_img">
+                        <img src="Images/insta2.jpg" alt="">
+                    </div>
+                </div>
+                <!-- slide 3 -->
+                <div class="swiper-slide">
+                    <div class="insta_img">
+                        <img src="Images/insta3.jpg" alt="">
+                    </div>
+                </div>
+                <!-- slide 4 -->
+                <div class="swiper-slide">
+                    <div class="insta_img">
+                        <img src="Images/insta4.jpg" alt="">
+                    </div>
+                </div>
+                <!-- slide 5 -->
+                <div class="swiper-slide">
+                    <div class="insta_img">
+                        <img src="Images/insta5.jpg" alt="">
+                    </div>
+                </div>
+                <!-- slide 6 -->
+                <div class="swiper-slide">
+                    <div class="insta_img">
+                        <img src="Images/insta6.jpg" alt="">
+                    </div>
+                </div>
+                <!-- slide 7 -->
+                <div class="swiper-slide">
+                    <div class="insta_img">
+                        <img src="Images/insta7.jpg" alt="">
+                    </div>
+                </div>
+                <!-- slide 8 -->
+                <div class="swiper-slide">
+                    <div class="insta_img">
+                        <img src="Images/insta8.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- FOOTER  -->
+    <section class="footer">
+        <div class="footer_top">
+            <h1>Fashion Forward: Stay in the Know
+                with Our Newsletter</h1>
+            <div class="input">
+                <input type="email" placeholder="Your Email">
+                <button>Subscribe <i class="ri-arrow-right-line"></i></button>
+            </div>
+        </div>
+        <div class="footer_bottom">
+            <div class="footer_col">
+                <h2>Get in touch</h2>
+
+                <div class="info">
+                    <h4>T: + (08) 9055 0269</h4>
+                    <h4>E: example@example.com</h4>
+                </div>
+                <p>50 Porana Place, West Casuarinas, Western Australia, Australia.</p>
+            </div>
+            <div class="footer_col">
+                <h2>Categories</h2>
+
+                <a href="#">Accessories</a>
+                <a href="#">Bags</a>
+                <a href="#">Glasses</a>
+                <a href="#">Men</a>
+                <a href="#">Outerwear</a>
+            </div>
+            <div class="footer_col">
+                <h2>Infomation</h2>
+
+                <a href="#">About</a>
+                <a href="#">Privacy Policy</a>
+                <a href="#">Returns Policy</a>
+                <a href="#">Shipping Policy</a>
+                <a href="#">Terms & Conditions</a>
+            </div>
+            <div class="footer_col">
+                <h2>Quick Links</h2>
+
+                <a href="#">My Account</a>
+                <a href="#">My Cart</a>
+                <a href="#">Size Chart</a>
+                <a href="#">Wishlist</a>
+                <a href="#">Gift Card</a>
+            </div>
+            <div class="footer_col">
+                <div class="logo">
+                    <img src="Images/logo-light.png" alt="">
+                </div>
+                <p>Rosyz Shopify is a dynamic and innovative online retail platform that offers a wide range of products
+                    to customers worldwide.</p>
+                <div class="footer_icon">
+                    <i class="ri-facebook-fill"></i>
+                    <i class="ri-twitter-fill"></i>
+                    <i class="ri-linkedin-fill"></i>
+                    <i class="ri-youtube-fill"></i>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="copyright">
+        <p>Copyright © 2025 . All rights reserved <span>Priyanshu Singh</span></p>
+    </section>
+
+    <!-- Mixitup JS  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mixitup/3.3.1/mixitup.min.js"></script>
+    <!-- Swiper Slider JS  -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/11.0.5/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+</body>
+
+</html>
