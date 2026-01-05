@@ -631,6 +631,9 @@ Step 6: Release Pipeline
     
     docker ps
 
+<p align="center">
+  <img src="pipeline.png" alt="pipeline completion" width="900"/>
+</p>
 
 In browser:
 
@@ -638,6 +641,12 @@ In browser:
 
 
 Application should load successfully.
+
+<p align="center">
+  <img src="hosted-page.png" alt="hosting on ec2 ip" width="900"/>
+</p>
+
+
     
 
 <h2>Final Outcome</h2> <ul> <li>Docker image successfully built and pushed</li> <li>EC2 pulls the latest image from Docker Hub</li> <li>Nginx serves the e-commerce application</li> <li>Deployment completes successfully</li> </ul> <hr/> 
