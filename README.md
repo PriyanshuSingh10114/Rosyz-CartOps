@@ -1,3 +1,8 @@
+<p align="center">
+  <img src="cartops-architecture.png" alt="Architecture Diagram" width="900"/>
+</p>
+
+
 <h1>Rosyz CartOps – Single Tier E-Commerce Deployment on AWS</h1>
 
 <p> <strong>Rosyz CartOps</strong> is a single-tier static e-commerce application built with HTML, CSS, and JavaScript, deployed on AWS using Docker and AWS DevOps services. This project demonstrates a real-world CI/CD workflow with secure credential handling and containerized deployment on EC2. </p> 
