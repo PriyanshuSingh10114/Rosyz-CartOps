@@ -5,7 +5,7 @@
 
 <h1>Rosyz CartOps – Single Tier E-Commerce Deployment on AWS</h1>
 
-<p> <strong>Rosyz CartOps</strong> is a single-tier static e-commerce application built with HTML, CSS, and JavaScript, deployed on AWS using Docker and AWS DevOps services. This project demonstrates a real-world CI/CD workflow with secure credential handling and containerized deployment on EC2. </p> 
+<p> <strong>Rosyz CartOps</strong> is a single-tier static sample e-commerce application built with HTML, CSS, and JavaScript, deployed on AWS using Docker and AWS DevOps services. This project demonstrates a real-world CI/CD workflow with secure credential handling and containerized deployment on EC2. </p> 
 
 <hr/> <h2>Architecture Overview</h2>
 
@@ -58,12 +58,129 @@
 
 <h3>1. CodePipelineServiceRole</h3> 
 
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "codepipeline.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+    }
+
+Attached Policies
+
+    AllowUseCodeStarConnection (Customer inline)
+    
+    AmazonS3FullAccess
+    
+    AWSCodeBuildDeveloperAccess
+    
+    AWSCodeBuildReadOnlyAccess
+    
+    AWSCodeDeployFullAccess
+    
+    AWSCodePipeline_FullAccess
+    
+    AWSProtonCodeBuildProvisioningBasicAccess
+    
+    UseCodeConnections (Customer inline)
+
 <h3>2. CodeBuildServiceRole</h3> 
+
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "codebuild.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+    }
+
+Attached Policies
+
+    AmazonS3FullAccess
+    
+    AmazonSSMFullAccess
+    
+    AWSCodeBuildDeveloperAccess
+    
+    AWSCodeBuildDeveloperAccess- (Customer inline)
+    
+    AWSCodeStarFullAccess
+    
+    CloudWatchLogsFullAccess
+    
+    CodeBuildBasePolicy-CodeBuildServiceRole
 
 <h3>3. CodeDeployServiceRole</h3>  
 
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Principal": {
+                    "Service": "codedeploy.amazonaws.com"
+                },
+                "Action": "sts:AssumeRole"
+            }
+        ]
+    }
+
+Attached Policies
+
+    AmazonEC2FullAccess
+    
+    AmazonS3FullAccess
+    
+    AWSCodeDeployFullAccess
+
 <h3>4. EC2InstanceRole (Critical)</h3>
 
+Trust Relationship
+
+This trust policy allows EC2 to assume the role at instance startup.
+
+    {
+      "Version": "2012-10-17",
+      "Statement": [
+        {
+          "Effect": "Allow",
+          "Principal": {
+            "Service": "ec2.amazonaws.com"
+          },
+          "Action": "sts:AssumeRole"
+        }
+      ]
+    }
+
+Attached Policies
+
+    AmazonEC2ContainerRegistryFullAccess
+    
+    AmazonEC2ContainerRegistryReadOnly
+    
+    AmazonEC2RoleforAWSCodeDeploy
+    
+    AmazonS3FullAccess
+    
+    AmazonSSMFullAccess
+    
+    AWSCodeDeployDeployerAccess
+    
+    AWSCodeDeployFullAccess
+    
+    AWSCodeDeployReadOnlyAccess
+    
+    AWSCodeDeployRole
 
 <hr/> 
 
@@ -193,6 +310,53 @@
       -p 80:80 \
       $IMAGE_NAME
 
+<h2>S3 Bucket Creation for CI/CD Artifacts & Logs</h2>
+
+Step 1: Create S3 Bucket
+
+    Go to AWS Console → S3
+
+Click Create bucket
+
+Basic Configuration
+
+Bucket name:
+
+    rosyz-cartops-artifacts
+
+Region:
+
+    ap-south-1
+
+Step 2: Object Ownership
+
+    Select: ACLs disabled (recommended)
+    
+    Object ownership: Bucket owner enforced
+
+Step 3: Block Public Access (IMPORTANT)
+
+    Block all public access
+
+This bucket should never be public.
+
+Step 4: Bucket Versioning (Recommended)
+
+    Enable Versioning
+
+Step 5: Default Encryption
+
+Enable encryption:
+
+    Encryption type: SSE-S3
+    
+    Key type: Amazon S3 managed key (SSE-S3)
+
+Step 6: Create Bucket
+    
+    Click Create bucket
+
+
 <h2>EC2 Setup (Target Server)</h2>
 
 <h3>Step 1: Launch EC2</h3> 
@@ -251,11 +415,230 @@ aws cli v2 Linux ubuntu
 To check aws version
 
     aws --version
+
+
+AWS CodeBuild – Build Stage (Docker Image Build)
+
+Step 1: Create IAM Role for CodeBuild
+
+Trusted entity: codebuild.amazonaws.com
+
+Attach policies:
+
+    AWSCodeBuildDeveloperAccess
     
+    AmazonS3FullAccess
+    
+    AmazonSSMFullAccess
+    
+    CloudWatchLogsFullAccess
+
+Step 2: Create CodeBuild Project
+
+    Go to AWS Console → CodeBuild → Create project
+    
+    Project name: rosyz-cartops-build
+    
+    Source:
+    
+    Provider: GitHub (via CodeStar Connection)
+    
+    Repository: priyanshusingh10114/rosyz-cartops
+    
+    Branch: main
+
+    Environment:
+    
+    Managed image
+    
+    OS: Amazon Linux 2
+    
+    Image: aws/codebuild/standard:7.0
+    
+    Privileged mode: ENABLE (mandatory for Docker)
+    
+    Service role: select the CodeBuild IAM role
+    
+    Buildspec: use buildspec.yml from repository
+    
+    Artifacts:
+    
+    Type: S3 (handled automatically by CodePipeline)
+
+Step 3: Verify CodeBuild
+
+    Start build manually once
+    
+    Confirm:
+    
+    Docker image is built
+    
+    Image is pushed to Docker Hub
+    
+    Build status = Succeeded
+
+AWS CodeDeploy – Deploy Stage (EC2 Deployment)
+
+Step 1: Create IAM Role for CodeDeploy
+
+    Trusted entity: codedeploy.amazonaws.com
+    
+    Attach policies:
+    
+    AWSCodeDeployFullAccess
+    
+    AmazonS3FullAccess
+    
+    AmazonEC2FullAccess
+
+Step 2: Prepare EC2 Instance
+
+    Ubuntu EC2 instance
+    
+    Security group allows:
+    
+    Port 22 (SSH)
+    
+    Port 80 (HTTP)
+    
+    Attach EC2 instance role
+    
+    Install:
+    
+    Docker
+    
+    AWS CLI v2
+    
+    CodeDeploy agent (running)
+
+Step 3: Create CodeDeploy Application
+
+    Go to CodeDeploy → Applications → Create application
+    
+    Name: rosyz-cartops-app
+    
+    Compute platform: EC2/On-premises
+
+Step 4: Create Deployment Group
+
+    Deployment group name: rosyz-cartops-dg
+    
+    Service role: CodeDeploy service role
+    
+    Deployment type: In-place
+    
+    Environment:
+    
+    EC2 instances (via tag or instance ID)
+    
+    Disable load balancer (single-tier app)
+
+Step 5: appspec.yml
+
+    Ensure appspec.yml exists in repo root and references:
+    
+    scripts/stop_container.sh
+    
+    scripts/start_container.sh
+
+Step 6: Verify CodeDeploy
+
+    Create a test deployment
+    
+    Check:
+    
+    ApplicationStop runs
+    
+    ApplicationStart runs
+    
+    Container starts on EC2
+
+AWS CodePipeline – CI/CD Orchestration
+
+Step 1: Create IAM Role for CodePipeline
+
+    Create role using AWS service → CodePipeline
+    
+    Attach policies:
+    
+    AmazonS3FullAccess
+    
+    AWSCodeBuildDeveloperAccess
+    
+    AWSCodeDeployFullAccess
+    
+    AWSCodePipeline_FullAccess
+
+Add inline policy:
+
+    codestar-connections:UseConnection for GitHub connection ARN
+
+Step 2: Create CodePipeline
+
+    Go to CodePipeline → Create pipeline
+    
+    Pipeline name: rosyz-cartops-pipeline
+    
+    Service role: CodePipeline service role
+    
+    Artifact store:
+    
+    S3 bucket: rosyz-cartops-artifacts
+
+Step 3: Source Stage
+
+    Provider: GitHub (CodeStar Connection)
+    
+    Repository: priyanshusingh10114/rosyz-cartops
+    
+    Branch: main
+    
+    Output artifact: SourceArtifact
+
+Step 4: Build Stage
+
+    Provider: AWS CodeBuild
+    
+    Project: rosyz-cartops-build
+    
+    Input artifact: SourceArtifact
+    
+    Output artifact: BuildArtifact
+
+Step 5: Deploy Stage
+
+    Provider: AWS CodeDeploy
+    
+    Application name: rosyz-cartops-app
+    
+    Deployment group: rosyz-cartops-dg
+    
+    Input artifact: BuildArtifact
+
+Step 6: Release Pipeline
+
+    Click Release change
+    
+    Pipeline flow:
+    
+    Source → Build → Deploy
+    
+    All stages should turn green
+    
+    Final Verification
+    
+    On EC2:
+    
+    docker ps
 
 
-<h2>Key Problems Solved</h2> 
-<ul> <li>IAM AssumeRole errors across services</li> <li>CodeDeploy stuck deployments</li> <li>SSM-based secure credential handling</li> <li>Docker Hub authentication during deployment</li> <li>CodeStar Connection authorization issues</li> </ul> <hr/> 
+In browser:
+
+    http://<EC2_PUBLIC_IP>
+
+
+Application should load successfully.
+    
 
 <h2>Final Outcome</h2> <ul> <li>Docker image successfully built and pushed</li> <li>EC2 pulls the latest image from Docker Hub</li> <li>Nginx serves the e-commerce application</li> <li>Deployment completes successfully</li> </ul> <hr/> 
 
